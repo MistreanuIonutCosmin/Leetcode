@@ -1,0 +1,19 @@
+from collections import defaultdict
+
+class Solution:
+    def __init__(self):
+        self.dict = defaultdict(int)
+    
+    def countElements(self, arr: List[int]) -> int:
+        for x in set(arr):
+            self.dict[x] = 0
+            
+        sum = 0
+        for x in arr:
+            if x + 1 in self.dict:
+               sum += 1
+            
+        return sum
+
+        
+        
