@@ -1,0 +1,19 @@
+import math
+
+class Solution:
+    
+    def split(string):
+        return [c for c in string]
+        
+    def isPowerOfFour(self, num: int) -> bool:
+    
+        
+        #binary_repr = "{0:b}".format(num)        
+        
+        #if num & (num - 1) == 0 and binary_repr[::-1].find('1') % 2 == 0:
+        #   return True
+        
+        if num & (num - 1) == 0 and num % 3 == 1:
+            return True
+        
+        return False
