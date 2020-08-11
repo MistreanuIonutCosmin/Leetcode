@@ -1,0 +1,38 @@
+class Solution:
+    def orangesRotting(self, grid: List[List[int]]) -> int:
+        freshOranges = set()
+        rottenOranges = set()
+        
+        for (idx, row) in enumerate(grid):
+            for (jdx, cell) in enumerate(row):
+                if cell == 1:
+                    freshOranges.add((idx, jdx))
+                elif cell == 2:
+                    rottenOranges.add((idx, jdx))
+            
+        minutes = 0
+        directions = [[-1,0], [1, 0], [0, -1], [0, 1]]
+        
+        while len(rottenOranges):
+            infectedOrages = set()
+            
+            for rottenOrage in rottenOranges:
+                for direction in directions:
+                    i = rottenOrage[0] + direction[0]
+                    j = rottenOrage[1] + direction[1]
+                    
+                    if i >= 0 and i < len(grid) and j >= 0 and j < len(grid[0]) and (i, j) in freshOranges:
+                        infectedOrages.add((i, j))
+                        freshOranges.remove((i, j))
+                
+            rottenOranges = infectedOrages
+            if len(infectedOrages):
+                minutes += 1
+            
+        if len(freshOranges) is 0:
+            return minutes
+            
+        return -1
+                    
+            
+                
