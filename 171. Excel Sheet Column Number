@@ -1,0 +1,14 @@
+import string
+
+class Solution:
+    def getpos(self, c):
+        return string.ascii_uppercase.find(c) + 1
+        #return ord(c) - 64
+        
+    def titleToNumber(self, s: str) -> int:
+        sum = 0
+        for idx, c in enumerate(s[::-1]):
+            sum += 26 ** idx * self.getpos(c)
+        
+        return sum
+        
