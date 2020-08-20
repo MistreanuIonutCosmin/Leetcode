@@ -1,0 +1,21 @@
+class Solution:
+    def toGoatLatin(self, S: str) -> str:
+        newS  = ""
+        a = 'a'
+        ma = 'ma'
+        vowels = set(['a', 'e', 'i', 'o', 'u'])
+        words = S.split()
+        
+        for idx, word in enumerate(words):
+            if word[0].lower() in vowels:
+                word += ma + a
+            else:
+                word = word[1:] + word[0] + ma + a
+            
+            a += 'a'
+            
+            newS += word + " "
+        
+        return newS[:-1]
+                
+                
